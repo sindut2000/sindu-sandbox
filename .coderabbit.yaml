@@ -3,7 +3,7 @@ reviews:
   path_filters:
     - "!node_modules/**"
     - "!vendor/**"
-  path_instruction:
+  path_instructions:
     - path: "src/**/*.tsx"
       instructions: |
         Review React components for correctness and maintainability:
@@ -13,6 +13,15 @@ reviews:
         - Check accessibility basics: semantic HTML, labels, keyboard focus, list keys.
         - Flag unnecessary re-renders or state that could be derived.
         Suggest concrete fixes; skip style-only nitpicks unless they affect readability or correctness.
+    - path: "src/components/minigames/**"
+      instructions: |
+        Review minigame components for interactive correctness:
+        - Clean up timers, intervals, and event listeners in useEffect return functions.
+        - Avoid stale closures in game loops and keyboard handlers.
+        - Ensure onWin/onLose fire exactly once and cannot be triggered after unmount.
+        - Keep game state transitions explicit (playing → won/lost) with no impossible states.
+        - Prefer keyboard + touch-friendly controls; flag focus traps or missing Escape handling.
+        Skip visual/Tailwind nitpicks unless they break layout or accessibility.
     - path: "src/**/*.ts"
       instructions: |
         Review TypeScript modules (types, hooks, data) for type safety and clarity.
