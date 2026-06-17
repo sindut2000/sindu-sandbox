@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+
+  --color-cream: #fff9f0;
+  --color-bunny-yellow: #fde68a;
+  --color-bunny-yellow-border: #fbbf24;
+  --color-bunny-teal: #a7f3d0;
+  --color-bunny-teal-border: #34d399;
+  --color-bunny-pink: #fbcfe8;
+  --color-bunny-pink-border: #f472b6;
+  --color-bunny-green: #bbf7d0;
+  --color-bunny-green-border: #4ade80;
+  --color-bunny-purple: #e9d5ff;
+  --color-bunny-purple-border: #c084fc;
+  --color-bunny-orange: #fed7aa;
+  --color-bunny-orange-border: #fb923c;
+  --color-bunny-blue: #bae6fd;
+  --color-bunny-blue-border: #38bdf8;
+  --color-bunny-ribbon: #f9a8d4;
+  --color-bunny-ribbon-dark: #ec4899;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes bounce-gentle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 1.5s ease-in-out infinite;
+}
+
+@keyframes highlight-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(249, 168, 212, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(249, 168, 212, 0);
+  }
+}
+
+.highlight-card {
+  animation: highlight-pulse 1.5s ease-in-out 3;
+}
