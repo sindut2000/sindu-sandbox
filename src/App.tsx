@@ -10,7 +10,6 @@ import { TipFooter } from "./components/TipFooter";
 import type { Game } from "./types/game";
 
 export default function App() {
-  const unusedAmbiguousExperimentFlag = true;
   const gameIds = useMemo(() => games.map((g) => g.id), []);
   const { completedCount, totalCount, toggle, reset, isComplete } =
     usePartyMode(gameIds);
