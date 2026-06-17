@@ -3,3 +3,20 @@ reviews:
   path_filters:
     - "!node_modules/**"
     - "!vendor/**"
+  path_instructions:
+    - path: "src/**/*.tsx"
+      instructions: |
+        Review React components for correctness and maintainability:
+        - Type props, state, and event handlers explicitly; avoid implicit any.
+        - Follow React hooks rules (stable dependencies, no conditional hooks).
+        - Remove unused imports and dead code.
+        - Check accessibility basics: semantic HTML, labels, keyboard focus, list keys.
+        - Flag unnecessary re-renders or state that could be derived.
+        Suggest concrete fixes; skip style-only nitpicks unless they affect readability or correctness.
+    - path: "src/**/*.ts"
+      instructions: |
+        Review TypeScript modules (types, hooks, data) for type safety and clarity.
+        Flag unsafe casts, implicit any, unused exports, and unclear naming.
+    - path: "**/*.{yaml,yml,json}"
+      instructions: |
+        Review config changes for valid syntax, accidental secrets, and unintended breaking changes.
