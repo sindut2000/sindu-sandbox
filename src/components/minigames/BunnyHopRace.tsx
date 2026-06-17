@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { MiniGameButton, MiniGameFrame } from "./MiniGameFrame";
 import type { MiniGameProps } from "./types";
 
 export function BunnyHopRace({ onWin }: MiniGameProps) {
@@ -50,43 +51,46 @@ export function BunnyHopRace({ onWin }: MiniGameProps) {
   }, [jump]);
 
   return (
-    <div className="select-none text-center" onClick={jump} role="presentation">
-      <p className="mb-4 text-sm text-neon-cyan">
-        Score: {score}/{target} — Tap or Space to jump!
-      </p>
-      <div className="relative mx-auto h-40 w-full max-w-md overflow-hidden rounded-xl border-2 border-neon-cyan/40 bg-arcade-bg">
-        <div className="absolute bottom-0 h-8 w-full bg-game-green/30" />
+    <MiniGameFrame
+      score={`${score} / ${target}`}
+      hint="Tap or press Space to jump"
+    >
+      <div
+        className="relative h-40 cursor-pointer select-none"
+        onClick={jump}
+        role="presentation"
+      >
+        <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-game-green/25 to-transparent" />
         <span
           className={[
-            "absolute bottom-8 left-8 text-4xl transition-transform duration-300",
+            "absolute bottom-10 left-8 text-4xl transition-transform duration-300",
             jumping ? "-translate-y-14" : "",
           ].join(" ")}
         >
           🐰
         </span>
         {obstacle && (
-          <span className="absolute bottom-8 right-16 text-3xl">🥕</span>
+          <span className="absolute bottom-10 right-16 text-3xl">🥕</span>
         )}
         {lost && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/70">
-            <p className="font-display text-xs text-neon-pink">GAME OVER</p>
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-black/75 backdrop-blur-sm"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p className="font-display text-[10px] text-neon-pink">Game Over</p>
+            <MiniGameButton
+              variant="secondary"
+              onClick={() => {
+                setScore(0);
+                setLost(false);
+                setObstacle(false);
+              }}
+            >
+              Retry
+            </MiniGameButton>
           </div>
         )}
       </div>
-      {lost && (
-        <button
-          type="button"
-          onClick={(e) => {
-            e.stopPropagation();
-            setScore(0);
-            setLost(false);
-            setObstacle(false);
-          }}
-          className="mt-4 rounded-lg bg-neon-purple px-4 py-2 text-sm font-bold"
-        >
-          Retry
-        </button>
-      )}
-    </div>
+    </MiniGameFrame>
   );
 }

@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { MiniGameButton, MiniGameFrame } from "./MiniGameFrame";
 import type { MiniGameProps } from "./types";
 
 export function CarrotToss({ onWin }: MiniGameProps) {
@@ -29,11 +30,11 @@ export function CarrotToss({ onWin }: MiniGameProps) {
   }, [flying, throwsLeft, power, onWin]);
 
   return (
-    <div className="text-center">
-      <p className="mb-4 text-sm text-neon-cyan">
-        Basket: {score}/{target} · Throws left: {throwsLeft}
-      </p>
-      <div className="relative mx-auto h-44 w-full max-w-md rounded-xl border-2 border-neon-cyan/40 bg-arcade-bg">
+    <MiniGameFrame
+      score={`${score}/${target} in basket · ${throwsLeft} throws`}
+      hint="Charge power between 40–85%"
+    >
+      <div className="relative h-44">
         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-3xl">🐰</span>
         <span
           className={[
@@ -45,29 +46,26 @@ export function CarrotToss({ onWin }: MiniGameProps) {
         </span>
         <span className="absolute right-8 top-8 text-4xl">🧺</span>
         <div className="absolute bottom-4 left-4 right-4">
-          <div className="h-3 overflow-hidden rounded-full bg-arcade-border">
+          <div className="h-2.5 overflow-hidden rounded-full bg-arcade-border ring-1 ring-white/5">
             <div
               className="h-full bg-gradient-to-r from-game-teal to-neon-green transition-all"
               style={{ width: `${power}%` }}
             />
           </div>
-          <p className="mt-1 text-xs text-gray-400">Aim for the sweet spot (40–85%)</p>
         </div>
       </div>
-      <div className="mt-4 flex justify-center gap-3">
+      <div className="flex justify-center gap-2 border-t border-white/5 p-3">
         {!aiming ? (
-          <button
-            type="button"
+          <MiniGameButton
             onClick={() => setAiming(true)}
             disabled={throwsLeft <= 0 || flying}
-            className="rounded-lg bg-game-teal px-5 py-2 font-bold text-arcade-bg disabled:opacity-40"
           >
             Aim
-          </button>
+          </MiniGameButton>
         ) : (
           <>
-            <button
-              type="button"
+            <MiniGameButton
+              variant="secondary"
               onMouseDown={() => {
                 const iv = setInterval(() => {
                   setPower((p) => (p >= 100 ? 0 : p + 4));
@@ -78,20 +76,13 @@ export function CarrotToss({ onWin }: MiniGameProps) {
                 };
                 document.addEventListener("mouseup", stop);
               }}
-              className="rounded-lg bg-neon-yellow px-5 py-2 font-bold text-arcade-bg"
             >
-              Hold to charge
-            </button>
-            <button
-              type="button"
-              onClick={throwCarrot}
-              className="rounded-lg bg-neon-pink px-5 py-2 font-bold text-white"
-            >
-              Throw!
-            </button>
+              Charge
+            </MiniGameButton>
+            <MiniGameButton onClick={throwCarrot}>Throw!</MiniGameButton>
           </>
         )}
       </div>
-    </div>
+    </MiniGameFrame>
   );
 }
