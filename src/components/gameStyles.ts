@@ -2,48 +2,61 @@ import type { GameColor } from "../types/game";
 
 export const colorStyles: Record<
   GameColor,
-  { border: string; bg: string; badge: string; badgeText: string }
+  {
+    border: string;
+    glow: string;
+    badge: string;
+    tag: string;
+    playBtn: string;
+  }
 > = {
   yellow: {
-    border: "border-bunny-yellow-border",
-    bg: "bg-bunny-yellow/40",
-    badge: "bg-bunny-yellow-border",
-    badgeText: "text-amber-900",
+    border: "border-game-yellow/60",
+    glow: "hover:shadow-[0_0_24px_rgba(251,191,36,0.35)]",
+    badge: "bg-game-yellow text-arcade-bg",
+    tag: "bg-game-yellow/20 text-game-yellow",
+    playBtn: "from-game-yellow to-amber-500 hover:shadow-[0_0_20px_rgba(251,191,36,0.5)]",
   },
   teal: {
-    border: "border-bunny-teal-border",
-    bg: "bg-bunny-teal/40",
-    badge: "bg-bunny-teal-border",
-    badgeText: "text-emerald-900",
+    border: "border-game-teal/60",
+    glow: "hover:shadow-[0_0_24px_rgba(45,212,191,0.35)]",
+    badge: "bg-game-teal text-arcade-bg",
+    tag: "bg-game-teal/20 text-game-teal",
+    playBtn: "from-game-teal to-emerald-500 hover:shadow-[0_0_20px_rgba(45,212,191,0.5)]",
   },
   pink: {
-    border: "border-bunny-pink-border",
-    bg: "bg-bunny-pink/40",
-    badge: "bg-bunny-pink-border",
-    badgeText: "text-pink-900",
+    border: "border-game-pink/60",
+    glow: "hover:shadow-[0_0_24px_rgba(244,114,182,0.35)]",
+    badge: "bg-game-pink text-arcade-bg",
+    tag: "bg-game-pink/20 text-game-pink",
+    playBtn: "from-game-pink to-rose-500 hover:shadow-[0_0_20px_rgba(244,114,182,0.5)]",
   },
   green: {
-    border: "border-bunny-green-border",
-    bg: "bg-bunny-green/40",
-    badge: "bg-bunny-green-border",
-    badgeText: "text-green-900",
+    border: "border-game-green/60",
+    glow: "hover:shadow-[0_0_24px_rgba(74,222,128,0.35)]",
+    badge: "bg-game-green text-arcade-bg",
+    tag: "bg-game-green/20 text-game-green",
+    playBtn: "from-game-green to-emerald-400 hover:shadow-[0_0_20px_rgba(74,222,128,0.5)]",
   },
   purple: {
-    border: "border-bunny-purple-border",
-    bg: "bg-bunny-purple/40",
-    badge: "bg-bunny-purple-border",
-    badgeText: "text-purple-900",
+    border: "border-game-purple/60",
+    glow: "hover:shadow-[0_0_24px_rgba(167,139,250,0.35)]",
+    badge: "bg-game-purple text-arcade-bg",
+    tag: "bg-game-purple/20 text-game-purple",
+    playBtn: "from-game-purple to-violet-500 hover:shadow-[0_0_20px_rgba(167,139,250,0.5)]",
   },
   orange: {
-    border: "border-bunny-orange-border",
-    bg: "bg-bunny-orange/40",
-    badge: "bg-bunny-orange-border",
-    badgeText: "text-orange-900",
+    border: "border-game-orange/60",
+    glow: "hover:shadow-[0_0_24px_rgba(251,146,60,0.35)]",
+    badge: "bg-game-orange text-arcade-bg",
+    tag: "bg-game-orange/20 text-game-orange",
+    playBtn: "from-game-orange to-orange-500 hover:shadow-[0_0_20px_rgba(251,146,60,0.5)]",
   },
   blue: {
-    border: "border-bunny-blue-border",
-    bg: "bg-bunny-blue/40",
-    badge: "bg-bunny-blue-border",
-    badgeText: "text-sky-900",
+    border: "border-game-blue/60",
+    glow: "hover:shadow-[0_0_24px_rgba(56,189,248,0.35)]",
+    badge: "bg-game-blue text-arcade-bg",
+    tag: "bg-game-blue/20 text-game-blue",
+    playBtn: "from-game-blue to-sky-500 hover:shadow-[0_0_20px_rgba(56,189,248,0.5)]",
   },
 };

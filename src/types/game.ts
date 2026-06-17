@@ -12,7 +12,9 @@ export interface Game {
   number: number;
   name: string;
   emoji: string;
-  youNeed: string;
+  genre: string;
+  difficulty: "Easy" | "Medium" | "Hard";
+  controls: string;
   howToPlay: string;
   color: GameColor;
 }

@@ -1,25 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Press Start 2P", ui-monospace, monospace;
 
-  --color-cream: #fff9f0;
-  --color-bunny-yellow: #fde68a;
-  --color-bunny-yellow-border: #fbbf24;
-  --color-bunny-teal: #a7f3d0;
-  --color-bunny-teal-border: #34d399;
-  --color-bunny-pink: #fbcfe8;
-  --color-bunny-pink-border: #f472b6;
-  --color-bunny-green: #bbf7d0;
-  --color-bunny-green-border: #4ade80;
-  --color-bunny-purple: #e9d5ff;
-  --color-bunny-purple-border: #c084fc;
-  --color-bunny-orange: #fed7aa;
-  --color-bunny-orange-border: #fb923c;
-  --color-bunny-blue: #bae6fd;
-  --color-bunny-blue-border: #38bdf8;
-  --color-bunny-ribbon: #f9a8d4;
-  --color-bunny-ribbon-dark: #ec4899;
+  --color-arcade-bg: #0f0a1a;
+  --color-arcade-surface: #1a1230;
+  --color-arcade-card: #221838;
+  --color-arcade-border: #3d2a6b;
+
+  --color-neon-pink: #ff6ec7;
+  --color-neon-cyan: #00f5ff;
+  --color-neon-purple: #b44dff;
+  --color-neon-green: #39ff14;
+  --color-neon-yellow: #ffe566;
+
+  --color-game-yellow: #fbbf24;
+  --color-game-teal: #2dd4bf;
+  --color-game-pink: #f472b6;
+  --color-game-green: #4ade80;
+  --color-game-purple: #a78bfa;
+  --color-game-orange: #fb923c;
+  --color-game-blue: #38bdf8;
 }
 
 html {
@@ -29,9 +31,14 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--color-cream);
+  background-color: var(--color-arcade-bg);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  color: #e2e8f0;
+}
+
+.font-display {
+  font-family: var(--font-display);
 }
 
 @keyframes bounce-gentle {
@@ -44,13 +51,32 @@ body {
   }
 }
 
-@keyframes wiggle {
+@keyframes pulse-neon {
   0%,
   100% {
-    transform: rotate(-3deg);
+    box-shadow: 0 0 8px rgba(255, 110, 199, 0.4), 0 0 20px rgba(0, 245, 255, 0.2);
   }
   50% {
-    transform: rotate(3deg);
+    box-shadow: 0 0 16px rgba(255, 110, 199, 0.7), 0 0 40px rgba(0, 245, 255, 0.4);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes highlight-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 245, 255, 0.5), 0 0 20px rgba(255, 110, 199, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(0, 245, 255, 0), 0 0 30px rgba(255, 110, 199, 0.5);
   }
 }
 
@@ -58,20 +84,25 @@ body {
   animation: bounce-gentle 2s ease-in-out infinite;
 }
 
-.animate-wiggle {
-  animation: wiggle 1.5s ease-in-out infinite;
-}
-
-@keyframes highlight-pulse {
-  0%,
-  100% {
-    box-shadow: 0 0 0 0 rgba(249, 168, 212, 0.6);
-  }
-  50% {
-    box-shadow: 0 0 0 8px rgba(249, 168, 212, 0);
-  }
+.animate-pulse-neon {
+  animation: pulse-neon 2s ease-in-out infinite;
 }
 
 .highlight-card {
-  animation: highlight-pulse 1.5s ease-in-out 3;
+  animation: highlight-pulse 1.2s ease-in-out 3;
+}
+
+.arcade-grid-bg {
+  background-image:
+    linear-gradient(rgba(61, 42, 107, 0.3) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(61, 42, 107, 0.3) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.glow-text-pink {
+  text-shadow: 0 0 10px rgba(255, 110, 199, 0.8), 0 0 30px rgba(255, 110, 199, 0.4);
+}
+
+.glow-text-cyan {
+  text-shadow: 0 0 10px rgba(0, 245, 255, 0.8), 0 0 30px rgba(0, 245, 255, 0.4);
 }

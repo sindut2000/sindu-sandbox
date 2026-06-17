@@ -14,9 +14,9 @@ export function RandomGameButton({ games, onSelect }: RandomGameButtonProps) {
     if (spinning) return;
 
     setSpinning(true);
-
     let ticks = 0;
-    const maxTicks = 12;
+    const maxTicks = 14;
+
     const interval = setInterval(() => {
       const random = games[Math.floor(Math.random() * games.length)];
       setLastPick(random);
@@ -29,7 +29,7 @@ export function RandomGameButton({ games, onSelect }: RandomGameButtonProps) {
         onSelect(final);
         setSpinning(false);
       }
-    }, 80);
+    }, 70);
   }, [games, onSelect, spinning]);
 
   return (
@@ -38,17 +38,15 @@ export function RandomGameButton({ games, onSelect }: RandomGameButtonProps) {
         type="button"
         onClick={pickRandom}
         disabled={spinning}
-        className="group flex items-center gap-3 rounded-full bg-bunny-ribbon px-8 py-3 text-base font-extrabold uppercase tracking-wide text-white shadow-lg transition-all hover:bg-bunny-ribbon-dark hover:shadow-xl active:scale-95 disabled:opacity-70 sm:text-lg"
+        className="group animate-pulse-neon flex items-center gap-3 rounded-xl border-2 border-neon-purple bg-gradient-to-r from-neon-purple/30 to-neon-pink/30 px-8 py-3 font-display text-[10px] uppercase tracking-wider text-white transition-all hover:scale-105 active:scale-95 disabled:opacity-60 sm:text-xs"
       >
-        <span className="text-2xl transition-transform group-hover:animate-bounce-gentle">
-          🎲
-        </span>
-        {spinning ? "Picking..." : "Random Game"}
+        <span className="text-lg">🎰</span>
+        {spinning ? "Rolling..." : "Random Game"}
       </button>
 
       {lastPick && !spinning && (
-        <p className="animate-bounce-gentle text-center text-sm font-bold text-bunny-ribbon-dark sm:text-base">
-          🐰 Let&apos;s play: {lastPick.name}!
+        <p className="text-center text-sm font-bold text-neon-cyan">
+          🎮 Launching {lastPick.name}...
         </p>
       )}
     </div>

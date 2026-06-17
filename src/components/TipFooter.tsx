@@ -1,26 +1,19 @@
 export function TipFooter() {
   return (
-    <footer className="mt-8 flex flex-col items-center gap-5 sm:flex-row sm:items-end sm:justify-between">
-      <div className="flex w-full max-w-sm items-center gap-3 rounded-2xl border-2 border-bunny-yellow-border bg-bunny-yellow/50 p-4 shadow-sm sm:w-auto">
-        <span className="text-4xl" aria-hidden="true">
-          🐰
-        </span>
+    <footer className="mt-10 flex flex-col items-center gap-4 border-t border-arcade-border pt-8 sm:flex-row sm:justify-between">
+      <div className="flex items-center gap-3 rounded-xl border border-neon-yellow/30 bg-neon-yellow/5 px-4 py-3">
+        <span className="text-3xl">🎮</span>
         <div>
-          <p className="text-sm font-extrabold uppercase text-amber-900">
-            Tip:
-          </p>
-          <p className="text-sm font-semibold text-gray-800">
-            Add bunny ears for extra fun!
+          <p className="text-xs font-bold uppercase text-neon-yellow">Pro Tip</p>
+          <p className="text-sm text-gray-400">
+            Play on mobile — every game works with touch!
           </p>
         </div>
-        <span className="ml-auto text-3xl" aria-hidden="true">
-          👯
-        </span>
       </div>
 
-      <div className="rounded-full bg-bunny-ribbon px-8 py-3 shadow-md">
-        <p className="text-center text-sm font-extrabold uppercase tracking-wide text-white sm:text-base">
-          Have Fun &amp; Be Creative! ❤️
+      <div className="rounded-xl border border-neon-pink/30 bg-gradient-to-r from-neon-pink/10 to-neon-purple/10 px-6 py-3">
+        <p className="font-display text-[8px] uppercase tracking-wider text-neon-pink sm:text-[10px]">
+          Have Fun &amp; Keep Gaming! ❤️
         </p>
       </div>
     </footer>
