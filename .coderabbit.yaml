@@ -3,7 +3,7 @@ reviews:
   path_filters:
     - "!node_modules/**"
     - "!vendor/**"
-  path_instruction:
+  path_instructions:
     - path: "src/**/*.tsx"
       instructions: |
         Review React components for correctness and maintainability:
